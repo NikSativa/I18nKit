@@ -1,0 +1,13 @@
+platform :ios, '12.0'
+use_frameworks!
+
+workspace 'Sample'
+project 'Sample'
+
+target 'Sample' do
+    pod 'NI18n/Swinject', :path => './../'
+
+    target 'SampleTests' do
+        pod 'NI18nTestHelpers', :path => './../', :testspecs => ['Tests']
+    end
+end
