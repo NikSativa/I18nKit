@@ -5,9 +5,9 @@ workspace 'Sample'
 project 'Sample'
 
 target 'Sample' do
-    pod 'NI18n/Swinject', :path => './../'
+    pod 'NI18n', :path => './../'
+end
 
-    target 'SampleTests' do
-        pod 'NI18nTestHelpers', :path => './../', :testspecs => ['Tests']
-    end
+target 'SampleTests' do
+    pod 'NI18n/TestHelpers', :path => './../', :testspecs => ['Tests']
 end

@@ -1,16 +1,13 @@
 PODS:
+  - NI18n (1.0.0):
+    - NI18n/Core (= 1.0.0)
   - NI18n/Core (1.0.0)
-  - NI18n/Swinject (1.0.0):
-    - NI18n/Core
-    - Swinject
-  - NI18nTestHelpers (1.0.0):
-    - NI18n/Swinject
+  - NI18n/TestHelpers (1.0.0):
     - Nimble
     - Quick
     - Spry
     - "Spry+Nimble"
-  - NI18nTestHelpers/Tests (1.0.0):
-    - NI18n/Swinject
+  - NI18n/TestHelpers/Tests (1.0.0):
     - Nimble
     - Quick
     - Spry
@@ -21,12 +18,11 @@ PODS:
   - "Spry+Nimble (3.2.3)":
     - Nimble (> 7.0.0)
     - Spry (= 3.2.3)
-  - Swinject (2.6.2)
 
 DEPENDENCIES:
-  - NI18n/Swinject (from `./../`)
-  - NI18nTestHelpers (from `./../`)
-  - NI18nTestHelpers/Tests (from `./../`)
+  - NI18n (from `./../`)
+  - NI18n/TestHelpers (from `./../`)
+  - NI18n/TestHelpers/Tests (from `./../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -34,23 +30,18 @@ SPEC REPOS:
     - Quick
     - Spry
     - "Spry+Nimble"
-    - Swinject
 
 EXTERNAL SOURCES:
   NI18n:
     :path: "./../"
-  NI18nTestHelpers:
-    :path: "./../"
 
 SPEC CHECKSUMS:
-  NI18n: f82c4557358400a4037639a68b7afb8be39c68d9
-  NI18nTestHelpers: 0b7aa3468a8a39260bec03bd761de84cf673f497
+  NI18n: 890deaaf02148b054ac83ac584e409a9135283f8
   Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   Spry: 216a7f6566e6c7a0392f3f4b4e804e71d58e1835
   "Spry+Nimble": 65b76e7d2dbe2d9166109ff44d8eea44a0bea94e
-  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
 
-PODFILE CHECKSUM: ea196bb79992246f3fff6e9f6e43a9d6c3f3593d
+PODFILE CHECKSUM: 39056bbc94384da72060b0c65b28f9ee203aa702
 
 COCOAPODS: 1.7.4

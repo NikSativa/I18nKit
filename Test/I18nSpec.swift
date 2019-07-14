@@ -6,9 +6,9 @@ import Nimble
 import Spry
 import Spry_Nimble
 
-class NAnySpec: QuickSpec {
+class I18nSpec: QuickSpec {
     override func spec() {
-        describe("Any") {
+        describe("I18n") {
             it("should be a real test") {
                 expect(true).to(beTrue())
             }
