@@ -19,10 +19,9 @@ public class I18n<Key: I18nKeys> {
         let formatString = bundle.localizedString(forKey: key, value: key, table: table)
 
         let locale: Locale?
-        if let localization = bundle.preferredLocalizations.first  {
+        if let localization = bundle.preferredLocalizations.first {
             locale = Locale(identifier: localization)
-        }
-        else {
+        } else {
             locale = nil
         }
 

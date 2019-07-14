@@ -41,8 +41,7 @@ class I18nKeysSpec: QuickSpec {
                     let unique = Set(fromFile.keys)
                     expect(unique).to(beEmpty())
                 }
-            }
-            else {
+            } else {
                 it("should not be empty") {
                     let unique = Set(fromFile.keys)
                     expect(unique).toNot(beEmpty())
