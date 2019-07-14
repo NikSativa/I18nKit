@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-public class I18n<Key: I18nKeys> {
+public class I18n<Key: I18nKey> {
     private let bundle: Bundle
     private let table: String?
 
