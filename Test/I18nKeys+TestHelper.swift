@@ -17,17 +17,16 @@ class I18nKeysSpec: QuickSpec {
         static let correct: Options = [.unusedAppKeys, .unusedFileKeys]
     }
 
-    func test<Key: I18nKey>(_: Key.Type, bundle: Bundle = .main, fileName: String, options: Options = .correct) {
-        describe(String(describing: Key.self) + " " + fileName) {
+    func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
+        describe(fileName) {
             var fromFile: [String: String]!
-            var allKeys: [String]!
 
             beforeEach {
                 if let url = bundle.url(forResource: fileName, withExtension: "strings") {
                     fromFile = (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
+                } else {
+                    fromFile = [:]
                 }
-
-                allKeys = Key.allCases.map { $0.rawValue }
             }
 
             if options.contains(.emptyFile) {
@@ -68,6 +67,13 @@ class I18nKeysSpec: QuickSpec {
                     }
                 }
             }
+        }
+    }
+
+    func test<Key: I18nKey>(_ : Key.Type, bundle: Bundle = .main, fileName: String, options: Options = .correct) {
+        describe(String(describing: Key.self)) {
+            let allKeys = Key.allCases.map { $0.rawValue }
+            test(keys: allKeys, bundle: bundle, fileName: fileName, options: options)
         }
     }
 }
