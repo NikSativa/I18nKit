@@ -13,8 +13,6 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = "12.0"
     spec.swift_version = '5.0'
 
-    spec.frameworks = 'Foundation', 'UIKit'
-
     spec.resources = ['Source/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
     spec.source_files  = 'Test/**/*.swift'
     spec.exclude_files = 'Test/**/*Spec.swift', 'Test/**/Test*.*', 'Source/**/*.swift'
@@ -23,9 +21,10 @@ Pod::Spec.new do |spec|
     spec.dependency 'Spry'
     spec.dependency 'Quick'
     spec.dependency 'Spry+Nimble'
+    
     spec.dependency 'NI18n'
 
-    spec.frameworks = 'XCTest', 'Foundation'
+    spec.frameworks = 'XCTest', 'Foundation', 'UIKit'
 
     spec.test_spec 'Tests' do |tests|
         #        tests.requires_app_host = true
