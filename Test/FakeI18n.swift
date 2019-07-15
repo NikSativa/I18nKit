@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import Spry
 
-class FakeI18n<Key: I18nKeys>: I18n<Key>, Spryable where Key: SpryEquatable {
+class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable {
     enum ClassFunction: String, StringRepresentable {
         case empty
     }
