@@ -1,9 +1,10 @@
 import Foundation
-
 import Quick
 import Nimble
 import Spry
 import Spry_Nimble
+
+@testable import NI18n
 
 class I18nKeysSpec: QuickSpec {
     struct Options: OptionSet {

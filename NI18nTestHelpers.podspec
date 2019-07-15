@@ -16,13 +16,14 @@ Pod::Spec.new do |spec|
     spec.frameworks = 'Foundation', 'UIKit'
 
     spec.resources = ['Source/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
-    spec.source_files  = 'Test/**/*.swift', 'Source/**/*.swift'
-    spec.exclude_files = 'Test/**/*Spec.swift', 'Test/**/Test*.*'
+    spec.source_files  = 'Test/**/*.swift'
+    spec.exclude_files = 'Test/**/*Spec.swift', 'Test/**/Test*.*', 'Source/**/*.swift'
 
     spec.dependency 'Nimble'
     spec.dependency 'Spry'
     spec.dependency 'Quick'
     spec.dependency 'Spry+Nimble'
+    spec.dependency 'NI18n'
 
     spec.frameworks = 'XCTest', 'Foundation'
 

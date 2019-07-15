@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 import Spry
 
+@testable import NI18n
+
 class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable {
     enum ClassFunction: String, StringRepresentable {
         case empty

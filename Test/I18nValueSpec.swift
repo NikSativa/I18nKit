@@ -7,6 +7,7 @@ import Spry
 import Spry_Nimble
 
 @testable import NI18n
+@testable import NI18nTestHelpers
 
 class I18nValueSpec: QuickSpec {
     override func spec() {
