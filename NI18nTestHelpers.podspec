@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-    spec.name         = "NI18n"
+    spec.name         = "NI18nTestHelpers"
     spec.version      = "1.0.0"
     spec.summary      = "Internationalization framework"
 
@@ -16,6 +16,18 @@ Pod::Spec.new do |spec|
     spec.frameworks = 'Foundation', 'UIKit'
 
     spec.resources = ['Source/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
-    spec.source_files  = 'Source/**/*.swift'
-    spec.exclude_files = 'Test/**/*'
+    spec.source_files  = 'Test/**/*.swift', 'Source/**/*.swift'
+    spec.exclude_files = 'Test/**/*Spec.swift', 'Test/**/Test*.*'
+
+    spec.dependency 'Nimble'
+    spec.dependency 'Spry'
+    spec.dependency 'Quick'
+    spec.dependency 'Spry+Nimble'
+
+    spec.frameworks = 'XCTest', 'Foundation'
+
+    spec.test_spec 'Tests' do |tests|
+        #        tests.requires_app_host = true
+        tests.source_files = 'Test/**/*Spec.swift', 'Test/**/Test*.*'
+    end
 end
