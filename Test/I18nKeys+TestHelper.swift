@@ -6,18 +6,24 @@ import Spry_Nimble
 
 @testable import NI18n
 
-class I18nKeysSpec: QuickSpec {
-    struct Options: OptionSet {
+extension I18nKeysSpec {
+    public struct Options: OptionSet {
         public let rawValue: Int
 
-        static let emptyFile = Options(rawValue: 1 << 0)
-        static let unusedAppKeys = Options(rawValue: 1 << 1)
-        static let unusedFileKeys = Options(rawValue: 1 << 2)
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
+        }
 
-        static let correct: Options = [.unusedAppKeys, .unusedFileKeys]
+        public static let emptyFile = Options(rawValue: 1 << 0)
+        public static let unusedAppKeys = Options(rawValue: 1 << 1)
+        public static let unusedFileKeys = Options(rawValue: 1 << 2)
+
+        public static let correct: Options = [.unusedAppKeys, .unusedFileKeys]
     }
+}
 
-    func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
+open class I18nKeysSpec: QuickSpec {
+    public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
         describe(fileName) {
             var fromFile: [String: String]!
 
