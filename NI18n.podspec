@@ -3,8 +3,8 @@ Pod::Spec.new do |spec|
     spec.version      = "1.0.0"
     spec.summary      = "Internationalization framework"
 
-    spec.source       = { :git => "git@gitlab.com:gncore/NI18n.git" }
-    spec.homepage     = "https://gitlab.com/gncore/NI18n.git"
+    spec.source       = { :git => "git@bitbucket.org:tech4star/NI18n.git" }
+    spec.homepage     = "https://bitbucket.org/tech4star/NI18n.git"
 
     spec.license          = 'MIT'
     spec.author           = { "Nikita Konopelko" => "nik.sativa@gmail.com" }
