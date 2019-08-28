@@ -17,5 +17,5 @@ Pod::Spec.new do |spec|
 
     spec.resources = ['Source/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
     spec.source_files  = 'Source/**/*.swift'
-    spec.exclude_files = 'Test/**/*'
+    spec.exclude_files = 'Source/**/Test/**/*.*'
 end
