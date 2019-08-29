@@ -23,6 +23,13 @@ extension I18nKeysSpec {
 }
 
 open class I18nKeysSpec: QuickSpec {
+    public func test<T: I18nKey>(_ all: T.Type..., bundle: Bundle = .main, fileName: String, options: Options = .correct) {
+        test(keys: all.reduce([], { $0 + $1.allCases.map({ $0.rawValue }) }),
+             bundle: bundle,
+             fileName: fileName,
+             options: .correct)
+    }
+
     public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
         describe(fileName) {
             var fromFile: [String: String]!
@@ -73,13 +80,6 @@ open class I18nKeysSpec: QuickSpec {
                     }
                 }
             }
-        }
-    }
-
-    func test<Key: I18nKey>(_ : Key.Type, bundle: Bundle = .main, fileName: String, options: Options = .correct) {
-        describe(String(describing: Key.self)) {
-            let allKeys = Key.allCases.map { $0.rawValue }
-            test(keys: allKeys, bundle: bundle, fileName: fileName, options: options)
         }
     }
 }
