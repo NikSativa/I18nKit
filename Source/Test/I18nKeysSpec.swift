@@ -25,7 +25,7 @@ class TestI18nKeysSpec: I18nKeysSpec {
              fileName: "TestI18nCorrect",
              options: .correct)
 
-        test(TestI18n.self,
+        test(keys: [],
              bundle: Bundle(for: TestI18nKeysSpec.self),
              fileName: "TestI18nEmpty",
              options: .emptyFile)

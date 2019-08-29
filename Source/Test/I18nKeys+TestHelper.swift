@@ -27,7 +27,7 @@ open class I18nKeysSpec: QuickSpec {
         test(keys: all.reduce([], { $0 + $1.allCases.map({ $0.rawValue }) }),
              bundle: bundle,
              fileName: fileName,
-             options: .correct)
+             options: options)
     }
 
     public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
@@ -52,32 +52,32 @@ open class I18nKeysSpec: QuickSpec {
                     let unique = Set(fromFile.keys)
                     expect(unique).toNot(beEmpty())
                 }
+            }
+            
+            it("should not contain duplicates in app keys") {
+                let unique = Set(allKeys)
+                expect(unique.count).to(equal(allKeys.count))
+            }
 
-                it("should not contain duplicates in app keys") {
-                    let unique = Set(allKeys)
-                    expect(unique.count).to(equal(allKeys.count))
+            it("should not contain duplicates in file keys") {
+                let unique = Set(fromFile.keys)
+                expect(unique.count).to(equal(fromFile.count))
+            }
+
+            if options.contains(.unusedFileKeys) {
+                it("should not contain unused strings in file") {
+                    var filtered = fromFile
+                    allKeys.forEach { filtered?.removeValue(forKey: $0) }
+                    expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
                 }
+            }
 
-                it("should not contain duplicates in file keys") {
-                    let unique = Set(fromFile.keys)
-                    expect(unique.count).to(equal(fromFile.count))
-                }
-
-                if options.contains(.unusedFileKeys) {
-                    it("should not contain unused strings in file") {
-                        var filtered = fromFile
-                        allKeys.forEach { filtered?.removeValue(forKey: $0) }
-                        expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
+            if options.contains(.unusedAppKeys) {
+                it("should not contain unused strings in app") {
+                    let filtered = allKeys.filter {
+                        fromFile[$0] == nil
                     }
-                }
-
-                if options.contains(.unusedAppKeys) {
-                    it("should not contain unused strings in app") {
-                        let filtered = allKeys.filter {
-                            fromFile[$0] == nil
-                        }
-                        expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
-                    }
+                    expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
                 }
             }
         }
