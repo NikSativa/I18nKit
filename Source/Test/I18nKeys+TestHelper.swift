@@ -68,7 +68,13 @@ open class I18nKeysSpec: QuickSpec {
                 it("should not contain unused strings in file") {
                     var filtered = fromFile
                     allKeys.forEach { filtered?.removeValue(forKey: $0) }
-                    expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
+
+                    let parts = ["FileName: ",
+                                 fileName,
+                                 ", ",
+                                 "unused keys: ",
+                                 String(describing: filtered)]
+                    expect(filtered).to(beEmpty(), description: parts.joined())
                 }
             }
 
@@ -77,7 +83,12 @@ open class I18nKeysSpec: QuickSpec {
                     let filtered = allKeys.filter {
                         fromFile[$0] == nil
                     }
-                    expect(filtered).to(beEmpty(), description: "unused keys: " + String(describing: filtered))
+                    let parts = ["FileName: ",
+                                 fileName,
+                                 ", ",
+                                 "unused keys: ",
+                                 String(describing: filtered)]
+                    expect(filtered).to(beEmpty(), description: parts.joined())
                 }
             }
         }
