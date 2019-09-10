@@ -28,11 +28,11 @@ public class I18n<Key: I18nKey> {
         return String(format: formatString, locale: locale, arguments: parameters)
     }
 
-    public func t(_ key: Key, with parameters: CVarArg...) -> I18nValue {
+    public func v(_ key: Key, with parameters: CVarArg...) -> I18nValue {
         return I18nValue(t(key, with: parameters))
     }
 
-    public func t(_ key: Key, with parameters: [CVarArg]) -> I18nValue {
+    public func v(_ key: Key, with parameters: [CVarArg]) -> I18nValue {
         return I18nValue(t(key, with: parameters))
     }
 }
