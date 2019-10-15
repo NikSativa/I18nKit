@@ -53,7 +53,7 @@ open class I18nKeysSpec: QuickSpec {
                     expect(unique).toNot(beEmpty())
                 }
             }
-            
+
             it("should not contain duplicates in app keys") {
                 let unique = Set(allKeys)
                 expect(unique.count).to(equal(allKeys.count))

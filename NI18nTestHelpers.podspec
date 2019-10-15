@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
     spec.dependency 'Spry'
     spec.dependency 'Quick'
     spec.dependency 'Spry+Nimble'
-    
+
     spec.dependency 'NI18n'
 
     spec.frameworks = 'XCTest', 'Foundation', 'UIKit'
