@@ -44,13 +44,11 @@ open class I18nKeysSpec: QuickSpec {
 
             if options.contains(.emptyFile) {
                 it("should be empty") {
-                    let unique = Set(fromFile.keys)
-                    expect(unique).to(beEmpty())
+                    expect(fromFile.keys).to(beEmpty())
                 }
             } else {
                 it("should not be empty") {
-                    let unique = Set(fromFile.keys)
-                    expect(unique).toNot(beEmpty())
+                    expect(fromFile.keys).toNot(beEmpty())
                 }
             }
 
