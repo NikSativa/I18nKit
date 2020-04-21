@@ -23,19 +23,20 @@ extension I18nKeysSpec {
 }
 
 open class I18nKeysSpec: QuickSpec {
-    public func test<T: I18nKey>(_ all: T.Type..., bundle: Bundle = .main, fileName: String, options: Options = .correct) {
+    public func test<T: I18nKey>(_ all: T.Type..., bundle: Bundle = .main, fileName: String, localization localizationName: String? = nil, options: Options = .correct) {
         test(keys: all.reduce([], { $0 + $1.allCases.map({ $0.rawValue }) }),
              bundle: bundle,
              fileName: fileName,
+             localization: localizationName,
              options: options)
     }
 
-    public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, options: Options = .correct) {
-        describe(fileName) {
+    public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, localization localizationName: String? = nil, options: Options = .correct) {
+        describe([localizationName, fileName].compactMap({ $0 }).joined(separator: " ")) {
             var fromFile: [String: String]!
 
             beforeEach {
-                if let url = bundle.url(forResource: fileName, withExtension: "strings") {
+                if let url = bundle.url(forResource: fileName, withExtension: "strings", subdirectory: nil, localization: localizationName) {
                     fromFile = (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
                 } else {
                     fromFile = [:]
