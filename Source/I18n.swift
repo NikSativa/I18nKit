@@ -10,6 +10,10 @@ public class I18n<Key: I18nKey> {
         self.table = table
     }
 
+    public func t(_ key: Key) -> String {
+        return t(key, with: [])
+    }
+
     public func t(_ key: Key, with parameters: CVarArg...) -> String {
         return t(key, with: parameters)
     }
@@ -26,6 +30,10 @@ public class I18n<Key: I18nKey> {
         }
 
         return String(format: formatString, locale: locale, arguments: parameters)
+    }
+
+    public func v(_ key: Key) -> I18nValue {
+        return I18nValue(t(key, with: []))
     }
 
     public func v(_ key: Key, with parameters: CVarArg...) -> I18nValue {
