@@ -10,7 +10,7 @@ class I18nSpec: QuickSpec {
     override func spec() {
         describe("I18n") {
             it("should be a real test") {
-                expect(true).to(beTrue())
+                expect(false).to(beTrue())
             }
         }
     }
