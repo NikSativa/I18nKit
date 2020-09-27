@@ -20,23 +20,25 @@ class TestI18nKeysSpec: I18nKeysSpec {
     }
 
     override func spec() {
+        let bundle = Bundle.module
+
         test(TestI18n.self,
-             bundle: Bundle(for: TestI18nKeysSpec.self),
+             bundle: bundle,
              fileName: "TestI18nCorrect",
              options: .correct)
 
         test(keys: [],
-             bundle: Bundle(for: TestI18nKeysSpec.self),
+             bundle: bundle,
              fileName: "TestI18nEmpty",
              options: .emptyFile)
 
         test(TestI18n.self,
-             bundle: Bundle(for: TestI18nKeysSpec.self),
+             bundle: bundle,
              fileName: "TestI18nUnused",
              options: Options.correct.subtracting(.unusedFileKeys))
 
         test(TestI18n2.self,
-             bundle: Bundle(for: TestI18nKeysSpec.self),
+             bundle: bundle,
              fileName: "TestI18nUndefined",
              options: Options.correct.subtracting(.unusedAppKeys))
     }
