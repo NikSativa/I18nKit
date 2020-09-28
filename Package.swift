@@ -36,10 +36,10 @@ let package = Package(
                                    "Nimble",
                                    "Quick"],
                     path: "Tests/Specs",
-                    resources: [.copy("TestI18nCorrect.strings"),
-                                .copy("TestI18nEmpty.strings"),
-                                .copy("TestI18nUndefined.strings"),
-                                .copy("TestI18nUnused.strings")]
+                    resources: [.process("TestI18nCorrect.strings"),
+                                .process("TestI18nEmpty.strings"),
+                                .process("TestI18nUndefined.strings"),
+                                .process("TestI18nUnused.strings")]
         )
     ],
     swiftLanguageVersions: [.v5]

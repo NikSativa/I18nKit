@@ -13,11 +13,8 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = "11.0"
     spec.swift_version = '5.0'
 
-    spec.resources = ['Source/**/Test*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
-    spec.source_files  = 'Source/**/Test*.swift',
-                         'Source/**/Fake*.swift',
-                         'Source/**/*+TestHelper.swift'
-    spec.exclude_files = 'Source/**/*Spec.*'
+    spec.resources = ['TestHelpers/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
+    spec.source_files  = 'TestHelpers/**/*.swift'
 
     spec.dependency 'Nimble'
     spec.dependency 'Spry'
@@ -30,9 +27,7 @@ Pod::Spec.new do |spec|
 
     spec.test_spec 'Tests' do |tests|
         #        tests.requires_app_host = true
-        tests.source_files = 'Source/**/*Spec.swift'
-        tests.exclude_files = 'Source/**/Test*.*',
-                              'Source/**/Fake*.*',
-                              'Source/**/*+TestHelper.*'
+        tests.source_files = 'Tests/Specs/**/*.swift'
+        tests.resources = ['Tests/Specs/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
     end
 end
