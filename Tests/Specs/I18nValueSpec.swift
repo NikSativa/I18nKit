@@ -33,7 +33,7 @@ class I18nValueSpec: QuickSpec {
                     }
 
                     it("should apply localized string to corresponding property of UI component") {
-                        expect(view.title(for: .normal)).to(equal(text))
+                        expect(view.title(for: .normal)) == text
                     }
                 }
 
@@ -43,7 +43,7 @@ class I18nValueSpec: QuickSpec {
                     }
 
                     it("should apply localized string to corresponding property of UI component") {
-                        expect(view.title(for: .highlighted)).to(equal(text))
+                        expect(view.title(for: .highlighted)) == text
                     }
                 }
             }
@@ -57,7 +57,7 @@ class I18nValueSpec: QuickSpec {
                 }
 
                 it("should apply localized string to corresponding property of UI component") {
-                    expect(view.text).to(equal(text))
+                    expect(view.text) == text
                 }
             }
 
@@ -70,7 +70,7 @@ class I18nValueSpec: QuickSpec {
                 }
 
                 it("should apply localized string to corresponding property of UI component") {
-                    expect(view.text).to(equal(text))
+                    expect(view.text) == text
                 }
             }
 
@@ -83,7 +83,7 @@ class I18nValueSpec: QuickSpec {
                 }
 
                 it("should apply localized string to corresponding property of UI component") {
-                    expect(view.text).to(equal(text))
+                    expect(view.text) == text
                 }
             }
 
@@ -96,7 +96,7 @@ class I18nValueSpec: QuickSpec {
                 }
 
                 it("should apply localized string to corresponding property of UI component") {
-                    expect(view.placeholder).to(equal(text))
+                    expect(view.placeholder) == text
                 }
             }
         }

@@ -55,12 +55,12 @@ open class I18nKeysSpec: QuickSpec {
 
             it("should not contain duplicates in app keys") {
                 let unique = Set(allKeys)
-                expect(unique.count).to(equal(allKeys.count))
+                expect(unique.count) == allKeys.count
             }
 
             it("should not contain duplicates in file keys") {
                 let unique = Set(fromFile.keys)
-                expect(unique.count).to(equal(fromFile.count))
+                expect(unique.count) == fromFile.count
             }
 
             if options.contains(.unusedFileKeys) {
