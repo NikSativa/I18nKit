@@ -1,8 +1,7 @@
 import Foundation
 import Quick
 import Nimble
-import Spry
-import Spry_Nimble
+import NSpry
 
 @testable import NI18n
 

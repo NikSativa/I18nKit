@@ -17,9 +17,8 @@ Pod::Spec.new do |spec|
     spec.source_files  = 'TestHelpers/**/*.swift'
 
     spec.dependency 'Nimble'
-    spec.dependency 'Spry'
+    spec.dependency 'NSpry'
     spec.dependency 'Quick'
-    spec.dependency 'Spry+Nimble'
 
     spec.dependency 'NI18n'
 

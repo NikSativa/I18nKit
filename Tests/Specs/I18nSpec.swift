@@ -3,8 +3,7 @@ import UIKit
 
 import Quick
 import Nimble
-import Spry
-import Spry_Nimble
+import NSpry
 
 class I18nSpec: QuickSpec {
     override func spec() {
