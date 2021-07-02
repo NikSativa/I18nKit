@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
     spec.swift_version = '5.0'
 
     spec.resources = ['TestHelpers/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
-    spec.source_files  = 'TestHelpers/**/*.swift'
+    spec.source_files = 'TestHelpers/**/*.swift'
 
     spec.dependency 'Nimble'
     spec.dependency 'NSpry'
