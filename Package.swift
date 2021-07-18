@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,9 +13,9 @@ let package = Package(
         .library(name: "NI18nTestHelpers", targets: ["NI18nTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/Spry.git", .upToNextMajor(from: "3.0.0")),
-        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "3.0.0")),
-        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "8.0.1"))
+        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.0.1")),
+        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "4.0.0")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "9.2.0"))
     ],
     targets: [
         .target(name: "NI18n",
@@ -23,16 +23,14 @@ let package = Package(
                 path: "Source"),
         .target(name: "NI18nTestHelpers",
                 dependencies: ["NI18n",
-                               "Spry",
-                               .product(name: "Spry_Nimble", package: "Spry"),
+                               "NSpry",
                                "Nimble",
                                "Quick"],
                 path: "TestHelpers"),
         .testTarget(name: "NI18nTests",
                     dependencies: ["NI18n",
                                    "NI18nTestHelpers",
-                                   "Spry",
-                                   .product(name: "Spry_Nimble", package: "Spry"),
+                                   "NSpry",
                                    "Nimble",
                                    "Quick"],
                     path: "Tests/Specs",
