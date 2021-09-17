@@ -22,7 +22,12 @@ extension I18nKeysSpec {
 }
 
 open class I18nKeysSpec: QuickSpec {
-    public func test<T: I18nKey>(_ all: T.Type..., bundle: Bundle = .main, fileName: String, localization localizationName: String? = nil, options: Options = .correct) {
+    public func test<T: I18nKey>(_ all: T.Type...,
+                                 bundle: Bundle = .main,
+                                 fileName: String,
+                                 localization localizationName: String? = nil,
+                                 options: Options = .correct)
+    where T: CaseIterable {
         test(keys: all.reduce([], { $0 + $1.allCases.map({ $0.rawValue }) }),
              bundle: bundle,
              fileName: fileName,
@@ -30,7 +35,11 @@ open class I18nKeysSpec: QuickSpec {
              options: options)
     }
 
-    public func test(keys allKeys: [String], bundle: Bundle = .main, fileName: String, localization localizationName: String? = nil, options: Options = .correct) {
+    public func test(keys allKeys: [String],
+                     bundle: Bundle = .main,
+                     fileName: String,
+                     localization localizationName: String? = nil,
+                     options: Options = .correct) {
         describe([localizationName, fileName].compactMap({ $0 }).joined(separator: " ")) {
             var fromFile: [String: String]!
 

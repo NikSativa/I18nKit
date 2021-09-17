@@ -9,11 +9,11 @@ import NSpry
 @testable import NI18nTestHelpers
 
 class TestI18nKeysSpec: I18nKeysSpec {
-    enum TestI18n: String, I18nKey {
+    enum TestI18n: String, I18nKey, CaseIterable {
         case forTest
     }
 
-    enum TestI18n2: String, I18nKey {
+    enum TestI18n2: String, I18nKey, CaseIterable {
         case forTest
         case forTest2
     }
