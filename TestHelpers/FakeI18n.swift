@@ -1,6 +1,6 @@
 import Foundation
-import UIKit
 import NSpry
+import UIKit
 
 @testable import NI18n
 

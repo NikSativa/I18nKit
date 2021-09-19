@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
-import Quick
 import Nimble
 import NSpry
+import Quick
 
 class I18nSpec: QuickSpec {
     override func spec() {

@@ -1,12 +1,12 @@
 import Foundation
-import Quick
 import Nimble
 import NSpry
+import Quick
 
 @testable import NI18n
 
-extension I18nKeysSpec {
-    public struct Options: OptionSet {
+public extension I18nKeysSpec {
+    struct Options: OptionSet {
         public let rawValue: Int
 
         public init(rawValue: Int) {
@@ -28,7 +28,7 @@ open class I18nKeysSpec: QuickSpec {
                                  localization localizationName: String? = nil,
                                  options: Options = .correct)
     where T: CaseIterable {
-        test(keys: all.reduce([], { $0 + $1.allCases.map({ $0.rawValue }) }),
+        test(keys: all.reduce([]) { $0 + $1.allCases.map(\.rawValue) },
              bundle: bundle,
              fileName: fileName,
              localization: localizationName,
@@ -40,7 +40,7 @@ open class I18nKeysSpec: QuickSpec {
                      fileName: String,
                      localization localizationName: String? = nil,
                      options: Options = .correct) {
-        describe([localizationName, fileName].compactMap({ $0 }).joined(separator: " ")) {
+        describe([localizationName, fileName].compactMap { $0 }.joined(separator: " ")) {
             var fromFile: [String: String]!
 
             beforeEach {
