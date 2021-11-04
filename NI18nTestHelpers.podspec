@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = "NI18nTestHelpers"
-    spec.version      = "1.0.0"
+    spec.version      = "1.5.0"
     spec.summary      = "Internationalization framework"
 
     spec.source       = { :git => "git@github.com:NikSativa/NI18n.git" }
@@ -17,15 +17,37 @@ Pod::Spec.new do |spec|
     spec.source_files = 'TestHelpers/**/*.swift'
 
     spec.dependency 'NSpry'
-    spec.dependency 'Quick'
-    spec.dependency 'Nimble'
-    spec.dependency 'NSpry_Nimble'
     spec.dependency 'NI18n'
 
     spec.frameworks = 'XCTest', 'Foundation', 'UIKit'
 
+    spec.default_subspec = 'Core'
+
+    spec.subspec 'Core' do |sub|
+      sub.resources = ['TestHelpers/Core/**/*.{xcassets,json,imageset,png,strings,stringsdict}']
+      sub.source_files = 'TestHelpers/Core/**/*.{storyboard,xib,swift}'
+    end
+
+    spec.subspec 'Extra' do |sub|
+      sub.resources = ['TestHelpers/Extra/**/*.{xcassets,json,imageset,png,strings,stringsdict}']
+      sub.source_files = 'TestHelpers/Extra/**/*.swift'
+
+      sub.dependency 'Nimble'
+      sub.dependency 'Quick'
+      sub.dependency 'NSpry_Nimble'
+
+      sub.frameworks = 'XCTest', 'Foundation', 'UIKit'
+    end
+
     spec.test_spec 'Tests' do |tests|
         #        tests.requires_app_host = true
+
+        tests.dependency 'Quick'
+        tests.dependency 'Nimble'
+        tests.dependency 'NSpry_Nimble'
+
+        tests.dependency 'NI18nTestHelpers/Core'
+        tests.dependency 'NI18nTestHelpers/Extra'
 
         tests.source_files = 'Tests/Specs/**/*.swift'
         tests.resources = ['Tests/Specs/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']

@@ -8,7 +8,11 @@ import Quick
 @testable import NI18n
 @testable import NI18nTestHelpers
 
-class TestI18nKeysSpec: I18nKeysSpec {
+#if SWIFT_PACKAGE
+@testable import NI18nExtraTestHelpers
+#endif
+
+final class TestI18nKeysSpec: I18nKeysSpec {
     enum TestI18n: String, I18nKey, CaseIterable {
         case forTest
     }
