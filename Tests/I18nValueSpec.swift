@@ -8,7 +8,7 @@ import Quick
 @testable import NI18n
 @testable import NI18nTestHelpers
 
-class I18nValueSpec: QuickSpec {
+final class I18nValueSpec: QuickSpec {
     override func spec() {
         describe("I18nValue") {
             var text: String!

@@ -1,7 +1,7 @@
 import Foundation
 
 #if !SWIFT_PACKAGE
-private class BundleFinder {
+private final class BundleFinder {
 }
 
 extension Foundation.Bundle {
