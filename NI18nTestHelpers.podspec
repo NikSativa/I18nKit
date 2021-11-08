@@ -49,7 +49,7 @@ Pod::Spec.new do |spec|
         tests.dependency 'NI18nTestHelpers/Core'
         tests.dependency 'NI18nTestHelpers/Extra'
 
-        tests.source_files = 'Tests/Specs/**/*.swift'
-        tests.resources = ['Tests/Specs/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
+        tests.source_files = 'Tests/**/*.swift'
+        tests.resources = ['Tests/**/*.{storyboard,xib,xcassets,json,imageset,png,strings,stringsdict}']
     end
 end
