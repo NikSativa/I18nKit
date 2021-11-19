@@ -11,10 +11,10 @@ final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable
     enum Function: String, StringRepresentable {
         case t = "t(_:)"
         case tWith = "t(_:with:)"
-#if os(iOS)
+        #if os(iOS)
         case v = "v(_:)"
         case vWith = "v(_:with:)"
-#endif
+        #endif
     }
 
     init() {
@@ -44,7 +44,7 @@ final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable
         return spryify(arguments: key, prepare(parameters))
     }
 
-#if os(iOS)
+    #if os(iOS)
     override func v(_ key: Key) -> I18nValue {
         return spryify(arguments: key)
     }
@@ -56,5 +56,5 @@ final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable
     override func v(_ key: Key, with parameters: [CVarArg]) -> I18nValue {
         return spryify(arguments: key, prepare(parameters))
     }
-#endif
+    #endif
 }
