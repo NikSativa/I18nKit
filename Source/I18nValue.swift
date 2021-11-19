@@ -1,3 +1,4 @@
+#if os(iOS)
 import Foundation
 import UIKit
 
@@ -28,3 +29,4 @@ public struct I18nValue: Equatable {
         view.text = localizedString
     }
 }
+#endif

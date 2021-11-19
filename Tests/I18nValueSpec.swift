@@ -1,3 +1,4 @@
+#if os(iOS)
 import Foundation
 import UIKit
 
@@ -101,3 +102,4 @@ final class I18nValueSpec: QuickSpec {
         }
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if os(iOS)
 import Foundation
 import NSpry
 
@@ -8,3 +9,4 @@ extension I18nValue: SpryEquatable {
         return I18nValue(value)
     }
 }
+#endif
