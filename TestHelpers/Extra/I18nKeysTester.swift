@@ -5,7 +5,7 @@ import Quick
 
 @testable import NI18n
 
-public extension I18nKeysSpec {
+public extension I18nKeysTester {
     struct Options: OptionSet {
         public let rawValue: Int
 
@@ -21,7 +21,10 @@ public extension I18nKeysSpec {
     }
 }
 
-open class I18nKeysSpec: QuickSpec {
+public final class I18nKeysTester {
+    public init() {
+    }
+
     public func test<T: I18nKey>(_ all: T.Type...,
                                  bundle: Bundle = .main,
                                  fileName: String,

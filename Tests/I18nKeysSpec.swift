@@ -12,7 +12,7 @@ import Quick
 @testable import NI18nExtraTestHelpers
 #endif
 
-final class TestI18nKeysSpec: I18nKeysSpec {
+final class TestI18nKeysSpec: QuickSpec {
     enum TestI18n: String, I18nKey, CaseIterable {
         case forTest
     }
@@ -24,25 +24,26 @@ final class TestI18nKeysSpec: I18nKeysSpec {
 
     override func spec() {
         let bundle = Bundle.module
+        let tester = I18nKeysTester()
 
-        test(TestI18n.self,
-             bundle: bundle,
-             fileName: "TestI18nCorrect",
-             options: .correct)
+        tester.test(TestI18n.self,
+                    bundle: bundle,
+                    fileName: "TestI18nCorrect",
+                    options: .correct)
 
-        test(keys: [],
-             bundle: bundle,
-             fileName: "TestI18nEmpty",
-             options: .emptyFile)
+        tester.test(keys: [],
+                    bundle: bundle,
+                    fileName: "TestI18nEmpty",
+                    options: .emptyFile)
 
-        test(TestI18n.self,
-             bundle: bundle,
-             fileName: "TestI18nUnused",
-             options: Options.correct.subtracting(.unusedFileKeys))
+        tester.test(TestI18n.self,
+                    bundle: bundle,
+                    fileName: "TestI18nUnused",
+                    options: .correct.subtracting(.unusedFileKeys))
 
-        test(TestI18n2.self,
-             bundle: bundle,
-             fileName: "TestI18nUndefined",
-             options: Options.correct.subtracting(.unusedAppKeys))
+        tester.test(TestI18n2.self,
+                    bundle: bundle,
+                    fileName: "TestI18nUndefined",
+                    options: .correct.subtracting(.unusedAppKeys))
     }
 }
