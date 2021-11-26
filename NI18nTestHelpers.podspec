@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = "NI18nTestHelpers"
-    spec.version      = "1.5.1"
+    spec.version      = "1.5.2"
     spec.summary      = "Internationalization framework"
 
     spec.source       = { :git => "git@github.com:NikSativa/NI18n.git" }
