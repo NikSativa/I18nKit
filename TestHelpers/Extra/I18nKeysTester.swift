@@ -22,8 +22,7 @@ public extension I18nKeysTester {
 }
 
 public final class I18nKeysTester {
-    public init() {
-    }
+    public init() {}
 
     public func test<T: I18nKey>(_ all: T.Type...,
                                  bundle: Bundle = .main,
@@ -79,11 +78,13 @@ public final class I18nKeysTester {
                     var filtered = fromFile
                     allKeys.forEach { filtered?.removeValue(forKey: $0) }
 
-                    let parts = ["FileName: ",
-                                 fileName,
-                                 ", ",
-                                 "unused keys: ",
-                                 String(describing: filtered)]
+                    let parts = [
+                        "FileName: ",
+                        fileName,
+                        ", ",
+                        "unused keys: ",
+                        String(describing: filtered),
+                    ]
                     expect(filtered).to(beEmpty(), description: parts.joined())
                 }
             }
@@ -93,11 +94,13 @@ public final class I18nKeysTester {
                     let filtered = allKeys.filter {
                         fromFile[$0] == nil
                     }
-                    let parts = ["FileName: ",
-                                 fileName,
-                                 ", ",
-                                 "unused keys: ",
-                                 String(describing: filtered)]
+                    let parts = [
+                        "FileName: ",
+                        fileName,
+                        ", ",
+                        "unused keys: ",
+                        String(describing: filtered),
+                    ]
                     expect(filtered).to(beEmpty(), description: parts.joined())
                 }
             }
