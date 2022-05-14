@@ -83,7 +83,7 @@ public final class I18nKeysTester {
                         fileName,
                         ", ",
                         "unused keys: ",
-                        String(describing: filtered),
+                        String(describing: filtered)
                     ]
                     expect(filtered).to(beEmpty(), description: parts.joined())
                 }
@@ -99,7 +99,7 @@ public final class I18nKeysTester {
                         fileName,
                         ", ",
                         "unused keys: ",
-                        String(describing: filtered),
+                        String(describing: filtered)
                     ]
                     expect(filtered).to(beEmpty(), description: parts.joined())
                 }
