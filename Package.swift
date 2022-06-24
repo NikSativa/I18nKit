@@ -51,6 +51,5 @@ let package = Package(
                         .process("TestI18nUndefined.strings"),
                         .process("TestI18nUnused.strings")
                     ])
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )
