@@ -12,9 +12,9 @@ let package = Package(
         .library(name: "NI18nExtraTestHelpers", targets: ["NI18nExtraTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.2.6")),
-        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "4.0.0")),
-        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "9.2.0"))
+        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.2.9")),
+        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "10.0.0"))
     ],
     targets: [
         .target(name: "NI18n",
