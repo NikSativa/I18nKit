@@ -1,7 +1,6 @@
 #if os(iOS)
 import Foundation
 import NSpry
-
 @testable import NI18n
 
 extension I18nValue: SpryEquatable {

@@ -1,11 +1,9 @@
 #if os(iOS)
 import Foundation
-import UIKit
-
 import Nimble
 import NSpry
 import Quick
-
+import UIKit
 @testable import NI18n
 @testable import NI18nTestHelpers
 

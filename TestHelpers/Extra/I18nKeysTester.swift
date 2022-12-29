@@ -2,8 +2,9 @@ import Foundation
 import Nimble
 import NSpry
 import Quick
-
 @testable import NI18n
+
+// MARK: - I18nKeysTester.Options
 
 public extension I18nKeysTester {
     struct Options: OptionSet {

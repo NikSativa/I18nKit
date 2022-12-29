@@ -1,6 +1,5 @@
 import Foundation
 import NSpry
-
 @testable import NI18n
 
 final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable {
@@ -25,10 +24,10 @@ final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable
         return spryify(arguments: key)
     }
 
-    // helper to make stubbing like
-    // `i18n.stub(.tWith).with(key, "one parameter").andReturn("result")`
-    // instead of
-    // `i18n.stub(.tWith).with(key, ["one parameter"]).andReturn("result")`
+    /// helper to make stubbing like
+    /// `i18n.stub(.tWith).with(key, "one parameter").andReturn("result")`
+    /// instead of
+    /// `i18n.stub(.tWith).with(key, ["one parameter"]).andReturn("result")`
     private func prepare(_ parameters: [CVarArg]) -> Any {
         if parameters.count == 1 {
             return parameters[0]
