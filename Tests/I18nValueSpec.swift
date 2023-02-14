@@ -54,8 +54,8 @@ final class I18nValueSpec: QuickSpec {
                     value.apply(to: view)
                 }
 
-                it("should apply localized string to corresponding property of UI component") {
-                    expect(view.text) == text
+                it("should apply localized string to corresponding property of UI component") { @MainActor in
+                    expect(view.text).to(equal(text))
                 }
             }
 
@@ -67,7 +67,7 @@ final class I18nValueSpec: QuickSpec {
                     value.apply(to: view)
                 }
 
-                it("should apply localized string to corresponding property of UI component") {
+                it("should apply localized string to corresponding property of UI component") { @MainActor in
                     expect(view.text) == text
                 }
             }
@@ -80,7 +80,7 @@ final class I18nValueSpec: QuickSpec {
                     value.apply(to: view)
                 }
 
-                it("should apply localized string to corresponding property of UI component") {
+                it("should apply localized string to corresponding property of UI component") { @MainActor in
                     expect(view.text) == text
                 }
             }
@@ -93,7 +93,7 @@ final class I18nValueSpec: QuickSpec {
                     value.applyPlaceholder(to: view)
                 }
 
-                it("should apply localized string to corresponding property of UI component") {
+                it("should apply localized string to corresponding property of UI component") { @MainActor in
                     expect(view.placeholder) == text
                 }
             }
