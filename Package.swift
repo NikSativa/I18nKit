@@ -1,8 +1,7 @@
 // swift-tools-version:5.6
-
+// swiftformat:disable all
 import PackageDescription
 
-// swiftformat:disable all
 let package = Package(
     name: "NI18n",
     platforms: [.iOS(.v13), .macOS(.v10_15)],
@@ -13,8 +12,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.2.9")),
-        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
-        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "11.2.1"))
+        .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
+        .package(url: "git@github.com:Quick/Nimble.git", .upToNextMajor(from: "11.2.1"))
     ],
     targets: [
         .target(name: "NI18n",
