@@ -1,19 +1,20 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.8
 // swiftformat:disable all
 import PackageDescription
 
 let package = Package(
     name: "NI18n",
-    platforms: [.iOS(.v13), .macOS(.v10_15)],
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15)
+    ],
     products: [
         .library(name: "NI18n", targets: ["NI18n"]),
         .library(name: "NI18nTestHelpers", targets: ["NI18nTestHelpers"]),
         .library(name: "NI18nExtraTestHelpers", targets: ["NI18nExtraTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMajor(from: "1.2.9")),
-        .package(url: "git@github.com:Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
-        .package(url: "git@github.com:Quick/Nimble.git", .upToNextMajor(from: "11.2.1"))
+        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMinor(from: "2.1.2"))
     ],
     targets: [
         .target(name: "NI18n",
@@ -28,9 +29,7 @@ let package = Package(
         .target(name: "NI18nExtraTestHelpers",
                 dependencies: [
                     "NI18n",
-                    "NSpry",
-                    "Nimble",
-                    "Quick"
+                    "NSpry"
                 ],
                 path: "TestHelpers/Extra"),
         .testTarget(name: "NI18nTests",
@@ -38,10 +37,7 @@ let package = Package(
                         "NI18n",
                         "NI18nTestHelpers",
                         "NI18nExtraTestHelpers",
-                        "NSpry",
-                        .product(name: "NSpry_Nimble", package: "NSpry"),
-                        "Nimble",
-                        "Quick"
+                        "NSpry"
                     ],
                     path: "Tests",
                     resources: [

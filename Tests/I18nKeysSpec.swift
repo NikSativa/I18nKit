@@ -1,15 +1,12 @@
 import Foundation
-import Nimble
 import NSpry
-import Quick
+import XCTest
+
 @testable import NI18n
+@testable import NI18nExtraTestHelpers
 @testable import NI18nTestHelpers
 
-#if SWIFT_PACKAGE
-@testable import NI18nExtraTestHelpers
-#endif
-
-final class TestI18nKeysSpec: QuickSpec {
+final class TestI18nKeysSpec: XCTestCase {
     enum TestI18n: String, I18nKey, CaseIterable {
         case forTest
     }
@@ -19,28 +16,27 @@ final class TestI18nKeysSpec: QuickSpec {
         case forTest2
     }
 
-    override func spec() {
+    func test_tester() {
         let bundle = Bundle.module
-        let tester = I18nKeysTester()
 
-        tester.test(TestI18n.self,
-                    bundle: bundle,
-                    fileName: "TestI18nCorrect",
-                    options: .correct)
+        I18nKeysTester.test(TestI18n.self,
+                            bundle: bundle,
+                            fileName: "TestI18nCorrect",
+                            options: .correct)
 
-        tester.test(keys: [],
-                    bundle: bundle,
-                    fileName: "TestI18nEmpty",
-                    options: .emptyFile)
+        I18nKeysTester.test(keys: [],
+                            bundle: bundle,
+                            fileName: "TestI18nEmpty",
+                            options: .emptyFile)
 
-        tester.test(TestI18n.self,
-                    bundle: bundle,
-                    fileName: "TestI18nUnused",
-                    options: .correct.subtracting(.unusedFileKeys))
+        I18nKeysTester.test(TestI18n.self,
+                            bundle: bundle,
+                            fileName: "TestI18nUnused",
+                            options: .correct.subtracting(.unusedFileKeys))
 
-        tester.test(TestI18n2.self,
-                    bundle: bundle,
-                    fileName: "TestI18nUndefined",
-                    options: .correct.subtracting(.unusedAppKeys))
+        I18nKeysTester.test(TestI18n2.self,
+                            bundle: bundle,
+                            fileName: "TestI18nUndefined",
+                            options: .correct.subtracting(.unusedAppKeys))
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
-import Nimble
 import NSpry
-import Quick
+import XCTest
+
 @testable import NI18n
 
 // MARK: - I18nKeysTester.Options
@@ -22,14 +22,12 @@ public extension I18nKeysTester {
     }
 }
 
-public final class I18nKeysTester {
-    public init() {}
-
-    public func test<T: I18nKey>(_ all: T.Type...,
-                                 bundle: Bundle = .main,
-                                 fileName: String,
-                                 localization localizationName: String? = nil,
-                                 options: Options = .correct)
+public enum I18nKeysTester {
+    public static func test<T: I18nKey>(_ all: T.Type...,
+                                        bundle: Bundle = .main,
+                                        fileName: String,
+                                        localization localizationName: String? = nil,
+                                        options: Options = .correct)
     where T: CaseIterable {
         test(keys: all.reduce([]) { $0 + $1.allCases.map(\.rawValue) },
              bundle: bundle,
@@ -38,73 +36,58 @@ public final class I18nKeysTester {
              options: options)
     }
 
-    public func test(keys allKeys: [String],
-                     bundle: Bundle = .main,
-                     fileName: String,
-                     localization localizationName: String? = nil,
-                     options: Options = .correct) {
-        describe([localizationName, fileName].compactMap { $0 }.joined(separator: " ")) {
-            var fromFile: [String: String]!
+    public static func test(keys allKeys: [String],
+                            bundle: Bundle = .main,
+                            fileName: String,
+                            localization localizationName: String? = nil,
+                            options: Options = .correct) {
+        var fromFile: [String: String]!
 
-            beforeEach {
-                if let url = bundle.url(forResource: fileName, withExtension: "strings", subdirectory: nil, localization: localizationName) {
-                    fromFile = (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
-                } else {
-                    fromFile = [:]
-                }
+        if let url = bundle.url(forResource: fileName, withExtension: "strings", subdirectory: nil, localization: localizationName) {
+            fromFile = (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
+        } else {
+            fromFile = [:]
+        }
+
+        if options.contains(.emptyFile) {
+            XCTAssertTrue(fromFile.keys.isEmpty, "should be empty")
+        } else {
+            XCTAssertFalse(fromFile.keys.isEmpty, "should not be empty")
+        }
+
+        let uniqueAllKeys = Set(allKeys)
+        XCTAssertEqual(uniqueAllKeys.count, allKeys.count, "should not contain duplicates in app keys")
+
+        let fromFileKeys = Set(fromFile.keys)
+        XCTAssertEqual(fromFileKeys.count, fromFile.count, "should not contain duplicates in file keys")
+
+        if options.contains(.unusedFileKeys) {
+            var filtered = fromFile
+            allKeys.forEach { filtered?.removeValue(forKey: $0) }
+
+            let parts = [
+                "FileName: ",
+                fileName,
+                ", ",
+                "unused keys: ",
+                String(describing: filtered)
+            ]
+
+            XCTAssertTrue(filtered?.isEmpty == true, "should not contain unused strings in file. " + parts.joined())
+        }
+
+        if options.contains(.unusedAppKeys) {
+            let filtered = allKeys.filter {
+                fromFile[$0] == nil
             }
-
-            if options.contains(.emptyFile) {
-                it("should be empty") {
-                    expect(fromFile.keys).to(beEmpty())
-                }
-            } else {
-                it("should not be empty") {
-                    expect(fromFile.keys).toNot(beEmpty())
-                }
-            }
-
-            it("should not contain duplicates in app keys") {
-                let unique = Set(allKeys)
-                expect(unique.count) == allKeys.count
-            }
-
-            it("should not contain duplicates in file keys") {
-                let unique = Set(fromFile.keys)
-                expect(unique.count) == fromFile.count
-            }
-
-            if options.contains(.unusedFileKeys) {
-                it("should not contain unused strings in file") {
-                    var filtered = fromFile
-                    allKeys.forEach { filtered?.removeValue(forKey: $0) }
-
-                    let parts = [
-                        "FileName: ",
-                        fileName,
-                        ", ",
-                        "unused keys: ",
-                        String(describing: filtered)
-                    ]
-                    expect(filtered).to(beEmpty(), description: parts.joined())
-                }
-            }
-
-            if options.contains(.unusedAppKeys) {
-                it("should not contain unused strings in app") {
-                    let filtered = allKeys.filter {
-                        fromFile[$0] == nil
-                    }
-                    let parts = [
-                        "FileName: ",
-                        fileName,
-                        ", ",
-                        "unused keys: ",
-                        String(describing: filtered)
-                    ]
-                    expect(filtered).to(beEmpty(), description: parts.joined())
-                }
-            }
+            let parts = [
+                "FileName: ",
+                fileName,
+                ", ",
+                "unused keys: ",
+                String(describing: filtered)
+            ]
+            XCTAssertTrue(filtered.isEmpty == true, "should not contain unused strings in app. " + parts.joined())
         }
     }
 }

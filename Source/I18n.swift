@@ -30,18 +30,4 @@ public class I18n<Key: I18nKey> {
 
         return String(format: formatString, locale: locale, arguments: parameters)
     }
-
-    #if os(iOS)
-    public func v(_ key: Key) -> I18nValue {
-        return I18nValue(t(key, with: []))
-    }
-
-    public func v(_ key: Key, with parameters: CVarArg...) -> I18nValue {
-        return I18nValue(t(key, with: parameters))
-    }
-
-    public func v(_ key: Key, with parameters: [CVarArg]) -> I18nValue {
-        return I18nValue(t(key, with: parameters))
-    }
-    #endif
 }
