@@ -63,7 +63,9 @@ public enum I18nKeysTester {
 
         if options.contains(.unusedFileKeys) {
             var filtered = fromFile
-            allKeys.forEach { filtered?.removeValue(forKey: $0) }
+            for key in allKeys {
+                filtered?.removeValue(forKey: key)
+            }
 
             let parts = [
                 "FileName: ",

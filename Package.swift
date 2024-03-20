@@ -14,24 +14,33 @@ let package = Package(
         .library(name: "NI18nExtraTestHelpers", targets: ["NI18nExtraTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMinor(from: "2.1.2"))
+        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMinor(from: "2.1.4"))
     ],
     targets: [
         .target(name: "NI18n",
                 dependencies: [],
-                path: "Source"),
+                path: "Source",
+                resources: [
+                    .copy("../PrivacyInfo.xcprivacy")
+                ]),
         .target(name: "NI18nTestHelpers",
                 dependencies: [
                     "NI18n",
                     "NSpry"
                 ],
-                path: "TestHelpers/Core"),
+                path: "TestHelpers/Core",
+                resources: [
+                    .copy("../../PrivacyInfo.xcprivacy")
+                ]),
         .target(name: "NI18nExtraTestHelpers",
                 dependencies: [
                     "NI18n",
                     "NSpry"
                 ],
-                path: "TestHelpers/Extra"),
+                path: "TestHelpers/Extra",
+                resources: [
+                    .copy("../../PrivacyInfo.xcprivacy")
+                ]),
         .testTarget(name: "NI18nTests",
                     dependencies: [
                         "NI18n",
