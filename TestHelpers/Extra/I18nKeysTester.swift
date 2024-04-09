@@ -1,8 +1,8 @@
 import Foundation
-import NSpry
+import SpryKit
 import XCTest
 
-@testable import NI18n
+@testable import I18nKit
 
 // MARK: - I18nKeysTester.Options
 

@@ -1,7 +1,7 @@
 import Foundation
-import NSpry
+import SpryKit
 
-@testable import NI18n
+@testable import I18nKit
 
 final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable {
     enum ClassFunction: String, StringRepresentable {

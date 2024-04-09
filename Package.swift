@@ -3,50 +3,50 @@
 import PackageDescription
 
 let package = Package(
-    name: "NI18n",
+    name: "I18nKit",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15)
     ],
     products: [
-        .library(name: "NI18n", targets: ["NI18n"]),
-        .library(name: "NI18nTestHelpers", targets: ["NI18nTestHelpers"]),
-        .library(name: "NI18nExtraTestHelpers", targets: ["NI18nExtraTestHelpers"])
+        .library(name: "I18nKit", targets: ["I18nKit"]),
+        .library(name: "I18nKitTestHelpers", targets: ["I18nKitTestHelpers"]),
+        .library(name: "I18nKitExtraTestHelpers", targets: ["I18nKitExtraTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/NSpry.git", .upToNextMinor(from: "2.1.4"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMinor(from: "2.2.0"))
     ],
     targets: [
-        .target(name: "NI18n",
+        .target(name: "I18nKit",
                 dependencies: [],
                 path: "Source",
                 resources: [
                     .copy("../PrivacyInfo.xcprivacy")
                 ]),
-        .target(name: "NI18nTestHelpers",
+        .target(name: "I18nKitTestHelpers",
                 dependencies: [
-                    "NI18n",
-                    "NSpry"
+                    "I18nKit",
+                    "SpryKit"
                 ],
                 path: "TestHelpers/Core",
                 resources: [
                     .copy("../../PrivacyInfo.xcprivacy")
                 ]),
-        .target(name: "NI18nExtraTestHelpers",
+        .target(name: "I18nKitExtraTestHelpers",
                 dependencies: [
-                    "NI18n",
-                    "NSpry"
+                    "I18nKit",
+                    "SpryKit"
                 ],
                 path: "TestHelpers/Extra",
                 resources: [
                     .copy("../../PrivacyInfo.xcprivacy")
                 ]),
-        .testTarget(name: "NI18nTests",
+        .testTarget(name: "I18nKitTests",
                     dependencies: [
-                        "NI18n",
-                        "NI18nTestHelpers",
-                        "NI18nExtraTestHelpers",
-                        "NSpry"
+                        "I18nKit",
+                        "I18nKitTestHelpers",
+                        "I18nKitExtraTestHelpers",
+                        "SpryKit"
                     ],
                     path: "Tests",
                     resources: [
