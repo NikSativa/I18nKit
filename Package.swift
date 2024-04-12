@@ -1,4 +1,4 @@
-// swift-tools-version:5.8
+// swift-tools-version:5.5
 // swiftformat:disable all
 import PackageDescription
 
@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "I18nKitExtraTestHelpers", targets: ["I18nKitExtraTestHelpers"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.2"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "2.2.3"))
     ],
     targets: [
         .target(name: "I18nKit",
