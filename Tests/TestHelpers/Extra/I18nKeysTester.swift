@@ -17,10 +17,13 @@ public extension I18nKeysTester {
         public static let emptyFile = Options(rawValue: 1 << 0)
         public static let unusedAppKeys = Options(rawValue: 1 << 1)
         public static let unusedFileKeys = Options(rawValue: 1 << 2)
-
         public static let correct: Options = [.unusedAppKeys, .unusedFileKeys]
     }
 }
+
+#if swift(>=6.0)
+extension I18nKeysTester.Options: Sendable {}
+#endif
 
 public enum I18nKeysTester {
     public static func test<T: I18nKey>(_ all: T.Type...,

@@ -3,8 +3,6 @@ import SpryKit
 import XCTest
 
 @testable import I18nKit
-@testable import I18nKitExtraTestHelpers
-@testable import I18nKitTestHelpers
 
 final class TestI18nKeysSpec: XCTestCase {
     enum TestI18n: String, I18nKey, CaseIterable {

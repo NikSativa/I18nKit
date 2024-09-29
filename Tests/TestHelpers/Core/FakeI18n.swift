@@ -3,7 +3,8 @@ import SpryKit
 
 @testable import I18nKit
 
-final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable where Key: SpryEquatable {
+final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable, @unchecked Sendable
+where Key: SpryEquatable {
     enum ClassFunction: String, StringRepresentable {
         case empty
     }
