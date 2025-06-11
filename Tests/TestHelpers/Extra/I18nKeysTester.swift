@@ -1,7 +1,6 @@
 import Foundation
 import SpryKit
 import XCTest
-
 @testable import I18nKit
 
 // MARK: - I18nKeysTester.Options
@@ -44,13 +43,12 @@ public enum I18nKeysTester {
                             fileName: String,
                             localization localizationName: String? = nil,
                             options: Options = .correct) {
-        var fromFile: [String: String]!
-
-        if let url = bundle.url(forResource: fileName, withExtension: "strings", subdirectory: nil, localization: localizationName) {
-            fromFile = (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
-        } else {
-            fromFile = [:]
-        }
+        var fromFile: [String: String]! =
+            if let url = bundle.url(forResource: fileName, withExtension: "strings", subdirectory: nil, localization: localizationName) {
+                (NSDictionary(contentsOf: url) as? [String: String]) ?? [:]
+            } else {
+                [:]
+            }
 
         if options.contains(.emptyFile) {
             XCTAssertTrue(fromFile.keys.isEmpty, "should be empty")

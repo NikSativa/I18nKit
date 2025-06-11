@@ -1,6 +1,5 @@
 import Foundation
 import SpryKit
-
 @testable import I18nKit
 
 final class FakeI18n<Key: I18nKey>: I18n<Key>, Spryable, @unchecked Sendable

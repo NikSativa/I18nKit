@@ -1,7 +1,6 @@
 import Foundation
 import SpryKit
 import XCTest
-
 @testable import I18nKit
 
 final class TestI18nKeysSpec: XCTestCase {

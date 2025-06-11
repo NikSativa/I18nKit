@@ -21,12 +21,12 @@ open class I18n<Key: I18nKey> {
         let key = key.rawValue
         let formatString = bundle.localizedString(forKey: key, value: key, table: table)
 
-        let locale: Locale?
-        if let localization = bundle.preferredLocalizations.first {
-            locale = Locale(identifier: localization)
-        } else {
-            locale = nil
-        }
+        let locale: Locale? =
+            if let localization = bundle.preferredLocalizations.first {
+                Locale(identifier: localization)
+            } else {
+                nil
+            }
 
         return String(format: formatString, locale: locale, arguments: parameters)
     }

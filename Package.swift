@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "I18nKit", targets: ["I18nKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/NikSativa/SpryKit.git", .upToNextMajor(from: "3.0.0"))
+        .package(url: "https://github.com/NikSativa/SpryKit.git", from: "3.0.4")
     ],
     targets: [
         .target(name: "I18nKit",
